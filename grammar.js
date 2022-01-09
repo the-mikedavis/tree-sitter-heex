@@ -175,13 +175,24 @@ module.exports = grammar({
       )
     ),
 
+    component_name: $ => choice(
+      seq(optional($.module), token.immediate("."), $.function),
+      seq($.module, optional(seq(".", $.function))),
+    ),
+
+    module: $ => prec.left(sep1(/[A-Z][^\-<>{}!"'/=\s\.]+/, ".")),
+
+    function: $ => /[^\-<>{}!"'\/=\s\.]+/,
+
     _code: $ => /[^%\s]+|[%\s]/,
 
     tag_name: $ => /[a-z]+[^\-<>{}!"'/=\s]*/,
 
-    component_name: $ => /[.A-Z]+[^\-<>{}!"'/=\s]*/,
-
-    attribute_name: $ => /[^<>{}"'/=\s]+/,
+    attribute_name: $ => token(prec(-1, /[^<>{}"'/=\s]+/)),
 
     text: $ => /[^<>{}\s]([^<>{}]*[^<>{}\s])?/,
 }})
+
+function sep1(rule, separator) {
+  return seq(rule, repeat(seq(separator, rule)));
+}

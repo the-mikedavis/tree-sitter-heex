@@ -79,6 +79,25 @@
     }
   },
   {
+    "type": "component_name",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "function",
+          "named": true
+        },
+        {
+          "type": "module",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
     "type": "directive",
     "named": true,
     "fields": {},
@@ -186,6 +205,11 @@
         }
       ]
     }
+  },
+  {
+    "type": "module",
+    "named": true,
+    "fields": {}
   },
   {
     "type": "partial_expression_value",
@@ -367,6 +391,10 @@
     "named": false
   },
   {
+    "type": ".",
+    "named": false
+  },
+  {
     "type": "/>",
     "named": false
   },
@@ -423,12 +451,12 @@
     "named": true
   },
   {
-    "type": "component_name",
-    "named": true
-  },
-  {
     "type": "do",
     "named": false
+  },
+  {
+    "type": "function",
+    "named": true
   },
   {
     "type": "html",

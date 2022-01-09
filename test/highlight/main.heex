@@ -25,6 +25,8 @@
       <MyComponents.modal key=value key="value" key={ @value } />
       <%# <- punctuation.bracket %>
       <%# ^ module %>
+      <%#          ^ punctuation.delimiter %>
+      <%#             ^ function %>
       <%#                  ^ attribute %>
       <%#                      ^ string %>
       <%#                            ^ attribute %>
@@ -34,7 +36,8 @@
       <%#                                                    ^ keyword %>
       <%#                                                      ^ punctuation.bracket %>
       <.form />
-      <%# ^ module %>
+      <%# ^ function %>
+<%#    ^ punctuation.delimiter %>
     <% end %>
     <%# here we're intentionally leaving a tag unclosed to trigger the error later on </html>: %>
     <div></div></div>
