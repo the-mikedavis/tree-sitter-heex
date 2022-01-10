@@ -207,11 +207,6 @@
     }
   },
   {
-    "type": "module",
-    "named": true,
-    "fields": {}
-  },
-  {
     "type": "partial_expression_value",
     "named": true,
     "fields": {}
@@ -461,6 +456,10 @@
   {
     "type": "html",
     "named": false
+  },
+  {
+    "type": "module",
+    "named": true
   },
   {
     "type": "tag_name",

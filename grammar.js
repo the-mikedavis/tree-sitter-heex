@@ -176,13 +176,11 @@ module.exports = grammar({
     ),
 
     component_name: $ => choice(
-      seq(optional($.module), ".", $.function),
-      seq($.module, optional(seq(".", $.function))),
+      seq(optional($.module), seq(".", $.function)),
+      $.module
     ),
 
-    module: $ => sep1($._module_token, "."),
-
-    _module_token: $ => /[A-Z][^\-<>{}!"'/=\s\.]*/,
+    module: $ => /([A-Z][^\-<>{}!"'/=\s\.]*)(\.[A-Z][^\-<>{}!"'/=\s\.]*)*/,
 
     function: $ => /[a-z][^\-<>{}!"'/=\s\.]*/,
 
@@ -194,7 +192,3 @@ module.exports = grammar({
 
     text: $ => /[^<>{}\s]([^<>{}]*[^<>{}\s])?/,
 }})
-
-function sep1(rule, separator) {
-  return seq(rule, repeat(seq(separator, rule)));
-}
