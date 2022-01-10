@@ -644,11 +644,8 @@
               ]
             },
             {
-              "type": "IMMEDIATE_TOKEN",
-              "content": {
-                "type": "STRING",
-                "value": "."
-              }
+              "type": "STRING",
+              "value": "."
             },
             {
               "type": "SYMBOL",
@@ -689,37 +686,37 @@
       ]
     },
     "module": {
-      "type": "PREC_LEFT",
-      "value": 0,
-      "content": {
-        "type": "SEQ",
-        "members": [
-          {
-            "type": "PATTERN",
-            "value": "[A-Z][^\\-<>{}!\"'/=\\s\\.]+"
-          },
-          {
-            "type": "REPEAT",
-            "content": {
-              "type": "SEQ",
-              "members": [
-                {
-                  "type": "STRING",
-                  "value": "."
-                },
-                {
-                  "type": "PATTERN",
-                  "value": "[A-Z][^\\-<>{}!\"'/=\\s\\.]+"
-                }
-              ]
-            }
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "SYMBOL",
+          "name": "_module_token"
+        },
+        {
+          "type": "REPEAT",
+          "content": {
+            "type": "SEQ",
+            "members": [
+              {
+                "type": "STRING",
+                "value": "."
+              },
+              {
+                "type": "SYMBOL",
+                "name": "_module_token"
+              }
+            ]
           }
-        ]
-      }
+        }
+      ]
+    },
+    "_module_token": {
+      "type": "PATTERN",
+      "value": "[A-Z][^\\-<>{}!\"'/=\\s\\.]*"
     },
     "function": {
       "type": "PATTERN",
-      "value": "[^\\-<>{}!\"'\\/=\\s\\.]+"
+      "value": "[a-z][^\\-<>{}!\"'/=\\s\\.]*"
     },
     "_code": {
       "type": "PATTERN",
