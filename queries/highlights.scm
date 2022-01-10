@@ -10,9 +10,6 @@
 ; HEEx tags are highlighted as HTML
 (tag_name) @tag
 
-; HEEx components are highlighted as types (Elixir modules)
-(component_name) @module
-
 [
   "/>"
   "<!"
@@ -32,6 +29,7 @@
 ] @keyword
 
 "=" @operator
+"." @punctuation.delimiter
 
 (comment) @comment
 

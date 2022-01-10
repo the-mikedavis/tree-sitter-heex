@@ -70,7 +70,7 @@ module.exports = grammar({
 
     start_component: $ => seq(
       '<',
-      $.component_name,
+      $._component_name,
       repeat(
         choice(
           $.attribute, 
@@ -82,13 +82,13 @@ module.exports = grammar({
 
     end_component: $ => seq(
       '</',
-      $.component_name,
+      $._component_name,
       '>'
     ),
 
     self_closing_component: $ => seq(
       '<',
-      $.component_name,
+      $._component_name,
       repeat(
         choice(
           $.attribute, 
@@ -179,7 +179,9 @@ module.exports = grammar({
 
     tag_name: $ => /[a-z]+[^\-<>{}!"'/=\s]*/,
 
-    component_name: $ => /[.A-Z]+[^\-<>{}!"'/=\s]*/,
+    _component_name: $ => seq(optional("."), $.component_name),
+
+    component_name: $ => /[^\.\-<>{}!"'/=\s][^\-<>{}!"'/=\s]*/,
 
     attribute_name: $ => /[^<>{}"'/=\s]+/,
 

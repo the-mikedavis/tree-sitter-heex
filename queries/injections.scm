@@ -11,10 +11,16 @@
  (#set! injection.combined))
 
 ; Regular expression_values do not need to be combined
-((directive (expression_value) @injection.content)
+([
+   ; expressions live within HTML tags, like:
+   ;     <link href={ Routes.static_path(..) } />
+   ; or are stand-alone directives that do not need to be combined
+   ;     <%= csrf_meta_tag()  %>
+   (expression_value)
+   ; e.g. <MyApp.modal key=value />
+   (component_name)
+ ] @injection.content
  (#set! injection.language "elixir"))
 
-; expressions live within HTML tags, and do not need to be combined
-;     <link href={ Routes.static_path(..) } />
 ((expression (expression_value) @injection.content)
  (#set! injection.language "elixir"))

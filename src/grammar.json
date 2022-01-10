@@ -208,7 +208,7 @@
         },
         {
           "type": "SYMBOL",
-          "name": "component_name"
+          "name": "_component_name"
         },
         {
           "type": "REPEAT",
@@ -241,7 +241,7 @@
         },
         {
           "type": "SYMBOL",
-          "name": "component_name"
+          "name": "_component_name"
         },
         {
           "type": "STRING",
@@ -258,7 +258,7 @@
         },
         {
           "type": "SYMBOL",
-          "name": "component_name"
+          "name": "_component_name"
         },
         {
           "type": "REPEAT",
@@ -633,9 +633,30 @@
       "type": "PATTERN",
       "value": "[a-z]+[^\\-<>{}!\"'/=\\s]*"
     },
+    "_component_name": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "STRING",
+              "value": "."
+            },
+            {
+              "type": "BLANK"
+            }
+          ]
+        },
+        {
+          "type": "SYMBOL",
+          "name": "component_name"
+        }
+      ]
+    },
     "component_name": {
       "type": "PATTERN",
-      "value": "[.A-Z]+[^\\-<>{}!\"'/=\\s]*"
+      "value": "[^\\.\\-<>{}!\"'/=\\s][^\\-<>{}!\"'/=\\s]*"
     },
     "attribute_name": {
       "type": "PATTERN",
